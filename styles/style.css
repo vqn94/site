@@ -20,7 +20,7 @@ body {
 }
 
 .gradient-purple-blue {
-  background-image: linear-gradient(30deg, #8E78FF, #B9DEDB);
+   background-image: linear-gradient(to right top, #0061f2, #0091ff, #00afe9, #00c290, #00cd13);
 }
 
 .under-container {
