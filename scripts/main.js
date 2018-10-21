@@ -1,41 +1,31 @@
-var myImage = document.querySelector('img');
-var picHeader = document.querySelector('h3');
+var square = document.getElementsByClassName('square');
 
-
-myImage.onclick = function() {
-    var mySrc = myImage.getAttribute('src');
-    if(mySrc === 'seul.jpg') {
-      myImage.setAttribute ('src','seo.jpg');
-      picHeader.textContent = 'Seoyeon!';
-    } else {
-      myImage.setAttribute ('src','seul.jpg');
-      picHeader.textContent = 'Seulgi!';
-    }
+for(var i = 0; i<square.length; i++){
+  square[i].addEventListener('mouseenter', function(){
+    this.classList.add("rubberBand");
+    this.addEventListener("animationend", function(){
+      this.classList.remove("rubberBand");
+    }, false);
+  })
 }
 
-/*
-document.querySelector('h1').onclick = function() {
-    alert('Ouch! Stop poking me!');
-}
+var menu = document.getElementById('menu');
+var secondcontainer = document.getElementById('secondcontainer');
+var scposition = secondcontainer.getBoundingClientRect();
+var profilpicture = document.getElementById('profilpicture');
 
-
-var myButton = document.querySelector('button');
-var myHeading = document.querySelector('h1');
-
-function setUserName() {
-  var myName = prompt('Please enter your name.');
-  localStorage.setItem('name', myName);
-  myHeading.textContent = 'This aint your site, ' + myName;
-}
-
-if(!localStorage.getItem('name')) {
-  setUserName();
-} else {
-  var storedName = localStorage.getItem('name');
-  myHeading.textContent = 'This aint your site, ' + storedName;
-}
-
-myButton.onclick = function() {
-  setUserName();
-}
-*/
+document.addEventListener("scroll", function(event) {
+	if(window.pageYOffset >= scposition.top-150){
+  	menu.style.opacity="0";
+  }
+  if (window.pageYOffset <= scposition.top-150){
+    menu.style.opacity="1";
+  }
+  
+	if(window.pageYOffset >= scposition.top-100){
+  	profilpicture.classList.add('profilpicture-animation');
+  } 
+  if(window.pageYOffset <= scposition.top-600){
+  	profilpicture.classList.remove('profilpicture-animation');
+  }
+});
